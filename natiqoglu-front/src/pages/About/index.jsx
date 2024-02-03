@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Helmet } from "react-helmet";
 
 function About() {
   return (
-    <div>About</div>
-  )
+    <div>
+      <Helmet>
+        <title>Natiqoglu-about</title>
+      </Helmet>
+      <p>About</p>
+    </div>
+  );
 }
 
-export default About
+export default About;
