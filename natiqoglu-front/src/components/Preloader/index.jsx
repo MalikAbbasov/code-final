@@ -12,8 +12,8 @@ function Preloader() {
     <div>
         <div className="preloader">
             <div className="texts-container">
-                <span>oglanlar,</span>
-                <span>Diyarina,</span>
+                <span>oglanlar</span>
+                <span>Diyarina</span>
                 <span>Xos gelmisiniz!!</span>
             </div>
         </div>

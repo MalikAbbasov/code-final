@@ -66,19 +66,19 @@ function Navbar() {
             >
               Login
             </NavLink>
-            <i onClick={handleBar} class="fa-solid fa-x"></i>
+            <i onClick={handleBar} className="fa-solid fa-x"></i>
           </ul>
           <div className="pages">
-            <i onClick={handleBar} class="fa-solid fa-bars"></i>
+            <i onClick={handleBar} className="fa-solid fa-bars"></i>
             <div className="dark_mode">
               <button onClick={handleToggle}>
                 {darkMode ? (
-                  <i class="fa-solid fa-sun"></i>
-                  ) : (
-                    <i class="fa-solid fa-moon">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star st"></i>
+                    <i className="fa-solid fa-moon">
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star st"></i>
                     </i>
+                  ) : (
+                    <i className="fa-solid fa-sun"></i>
                 )}
               </button>
             </div>
