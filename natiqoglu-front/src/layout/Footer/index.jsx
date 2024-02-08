@@ -2,17 +2,7 @@ import React from "react";
 import "./footer.scss"
 
 function Footer() {
-  // const [news, setNews] = useState([]);
-  // const [count, setCount] = useLocalStorage("count","0");
-  // const viewCounter = () =>{
-  //   setCount(count+1)
-  //   console.log(count);
-  // }
-  // useEffect(() => {
-  //   fetch("http://localhost:3400/news")
-  //     .then((res) => res.json())
-  //     .then((data) => setNews(data));
-  // }, []);
+
 
   return (
     <div>
@@ -50,13 +40,6 @@ function Footer() {
         </div>
       </footer>
 
-      {/* {news.map((x) => (
-        <div onClick={viewCounter}> 
-          <p>{x.name}</p>
-          <p>{x.about}</p>
-          <p>{count}</p>
-        </div>
-      ))} */}
     </div>
   );
 }

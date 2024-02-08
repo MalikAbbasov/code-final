@@ -10,9 +10,9 @@ import { authRoute } from './src/Routes/AuthRoutes.js'
 import { newsRoute } from './src/Routes/NewsRoutes.js'
 app.use(cors())
 
-app.use("/", userRoute)
+app.use("/user", userRoute)
+app.use("/news", newsRoute)
 app.use("/", authRoute)
-app.use("/", newsRoute)
 
 
 mongoose.connect(process.env.DB_SECRET_KEY)

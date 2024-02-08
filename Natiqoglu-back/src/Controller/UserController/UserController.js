@@ -20,7 +20,8 @@ export const getUserById = async (req, res) => {
 }
 
 export const addUser =  async (req, res) => {
-    const {name,password}=req.body
+    const {name,password} = req.body
+    console.log(password);
     try {
         const users = new UserModel({name,password})
         await users.save()

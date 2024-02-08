@@ -11,11 +11,11 @@ export const handleLoginController = async (req, res) => {
       return
     }
     if (users.password !== password) {
-      res.send("password is incorrect");
+      res.send("wrong password");
       return
     }
-    var token = jwt.sign({ name, role: users.role }, process.env.JWT_SECRET_KEY);
-    res.send(token);
+    const token = jwt.sign({ name, role: users.role }, process.env.JWT_SECRET_KEY);
+    res.json(token);
   } catch (error) {
     res.send(error.message)
   }
@@ -26,9 +26,9 @@ export const handleRegisterController = async (req, res) => {
   const hash = bcrypt.hashSync(password, 12);
   try {
     const users = new UserModel({ name, hash });
-    var token = jwt.sign({ name:users.name, role: users.role}, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign({ name:users.name, role: users.role}, process.env.JWT_SECRET_KEY);
     await users.save();
-    res.send(token);
+    res.json(token);
   } catch (error) {
     res.send(error.message);     
   }

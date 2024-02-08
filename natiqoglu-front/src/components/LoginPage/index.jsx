@@ -1,46 +1,45 @@
-import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import React, {  useContext, useState } from "react";
+import { UserContext } from "../../context/userContext/UserProvider";
+import { useNavigate } from "react-router-dom";
+import "./login.scss"
 
 function LoginPage() {
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
+  const {addToken} = useContext(UserContext)
+  const navigate = useNavigate()
+
+
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch("http://localhost:3400/login",{
+      method:"POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:name,
+        password:password
+      })
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      addToken(data)
+      navigate("/")
+    });
+}
   return (
     <div>
-      <Formik
-        initialValues={{ name: "", password: "", image: "" }}
-        validationSchema={Yup.object({
-          name: Yup.string()
-            .max(15, "Must be 15 characters or less")
-            .required("Required"),
-          password: Yup.string()
-            .max(20, "Must be 20 characters or less")
-            .required("Required"),
-          image: Yup.string()
-            .image("Invalid image address")
-            .required("Required"),
-        })}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        <Form>
-          <label htmlFor="name">First Name</label>
-          <Field name="name" type="text" />
-          <ErrorMessage name="name" />
 
-          <label htmlFor="password">Last Name</label>
-          <Field name="password" type="text" />
-          <ErrorMessage name="password" />
 
-          <label htmlFor="image">Email Address</label>
-          <Field name="image" type="text" />
-          <ErrorMessage name="image" />
+      <h1>login</h1>
+      <form onSubmit={handleSubmit}>
+        <input value={name} onChange={(e)=>setName(e.target.value)} type="text" />
+        <br />
+        <input value={password} onChange={(e)=>setPassword(e.target.value)} type="text" />
+        <br />
+        <button>login</button>
+      </form>
 
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
     </div>
   );
 }

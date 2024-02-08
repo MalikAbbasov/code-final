@@ -3,8 +3,8 @@ import { addUser, deleteUserById, getAllUsers, getUserById, updateUser } from '.
 import { authMiddleware } from '../Middleware/AuthMiddleware.js'
 export const userRoute = express.Router()
 
-userRoute.get('/users',getAllUsers )
-userRoute.get('/users/:id',getUserById )
-userRoute.post('/users',authMiddleware(["admin"]),addUser)
-userRoute.put('/users/:id',authMiddleware(["admin"]),updateUser)
-userRoute.delete('/users/:id',authMiddleware(["admin"]),deleteUserById)
+userRoute.get('/',getAllUsers )
+userRoute.get('/:id',getUserById )
+userRoute.post('/',authMiddleware(["admin"]),addUser)
+userRoute.put('/:id',authMiddleware(["admin"]),updateUser)
+userRoute.delete('/:id',authMiddleware(["admin"]),deleteUserById)
