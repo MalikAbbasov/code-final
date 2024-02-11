@@ -5,31 +5,44 @@ import jwt from "jsonwebtoken";
 export const handleLoginController = async (req, res) => {
   try {
     const { name, password } = req.body;
+    console.log(password);
     const users = await UserModel.findOne({ name });
+    console.log(users.password)
+    const isPasswordCorrect = await bcrypt.compare(password, users.password);
+    console.log(isPasswordCorrect);
     if (!users) {
-      res.send("users not found");
-      return
+      return res.send("user not found");
+      
     }
-    if (users.password !== password) {
-      res.send("wrong password");
-      return
+
+    if (!isPasswordCorrect) {
+      return res.send("wrong password");
+      
     }
-    const token = jwt.sign({ name, role: users.role }, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign(
+      { name, role: users.role },
+      process.env.JWT_SECRET_KEY
+    );
     res.json(token);
   } catch (error) {
-    res.send(error.message)
+    res.send(error.message);
   }
 };
 
 export const handleRegisterController = async (req, res) => {
-  const { name, password } = req.body;
+  const { name, password,image } = req.body;
+  console.log(password);
   const hash = bcrypt.hashSync(password, 12);
+  console.log(hash);
   try {
-    const users = new UserModel({ name, hash });
-    const token = jwt.sign({ name:users.name, role: users.role}, process.env.JWT_SECRET_KEY);
+    const users = new UserModel({ name,image, password: hash });
     await users.save();
+    const token = jwt.sign(
+      { name: users.name, image:users.image, role: users.role },
+      process.env.JWT_SECRET_KEY
+    );
     res.json(token);
   } catch (error) {
-    res.send(error.message);     
+    res.send(error.message);
   }
 };

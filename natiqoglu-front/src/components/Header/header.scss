@@ -1,0 +1,15 @@
+h5 {
+  font-size: 30px;
+  color: black;
+}
+h3 {
+    p{
+        color: white;
+        background-color: #001936;
+        transition: 400ms;
+        cursor: pointer;
+        &:hover {
+          background-color: #1364c0;
+        }
+    }
+}

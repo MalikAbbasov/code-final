@@ -15,6 +15,7 @@ function UserProvider({children}) {
         console.log(token_decoded)
         setDecode(token_decoded)
     }
+    
     function logOut() {
         setToken(null)
         setDecode(null)
@@ -23,6 +24,7 @@ function UserProvider({children}) {
     const data = {
         addToken,token, setToken,decode, setDecode,logOut
     }
+    
   return (
     <UserContext.Provider value={data}>
         {children}

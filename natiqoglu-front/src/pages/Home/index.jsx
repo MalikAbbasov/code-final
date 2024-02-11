@@ -1,7 +1,8 @@
 import React from "react";
 import Header from "../../components/Header";
-import { Helmet } from "react-helmet";
 import Fetchsection from "../../components/Fetchsection";
+import { Helmet } from "react-helmet-async";
+import Users from "../../components/Users";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       </Helmet>
       <Header />
       <Fetchsection/>
+      {/* <Users/> */}
     </div>
   );
 }

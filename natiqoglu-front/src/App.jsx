@@ -9,9 +9,11 @@ import Register from "./pages/Register";
 import Adminpanel from "./pages/Adminpanel";
 import News from "./components/News";
 import Users from "./components/Users";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
+    <HelmetProvider>
     <div className="App">
       <BrowserRouter>
         <Routes>
@@ -27,6 +29,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+    </HelmetProvider>
   );
 }
 

@@ -1,14 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import useLocalStorage from "use-local-storage";
 import "./navbar.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext/UserProvider";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
+  const { id } = useParams();
   const [bars, setBars] = useState(true);
-  const { decode,logOut } = useContext(UserContext);
+  const [user, setUser] = useState([]);
+  const { decode, logOut, token } = useContext(UserContext);
+
+  useEffect(() => {
+    getUsersById();
+  }, []);
+
+  async function getUsersById() {
+    const data = await fetch(`http://localhost:3400/user/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const res = await data.json();
+    setUser(res);
+  }
 
   const handleToggle = () => {
     setDarkMode(!darkMode);
@@ -48,8 +65,13 @@ function Navbar() {
             </NavLink>
             {decode ? (
               <>
-                <h1>profile</h1>
-                <p onClick={()=>logOut()}>log out</p>
+                <div>
+                  <img src={user.image} alt="" />
+                  <p>{user.name}</p>
+                  <p>salam</p>
+                  {console.log(user.name)}
+                </div>
+                <p onClick={() => logOut()}>log out</p>
               </>
             ) : (
               <>
@@ -72,20 +94,17 @@ function Navbar() {
                 </NavLink>
               </>
             )}
-            {
-              decode && decode.role === "admin" ? 
+            {decode && decode.role === "admin" ? (
               <NavLink
-              to="/adminpanel"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : ""
-              }
-            >
-              {" "}
-              Admin
-            </NavLink>
-              : null
-            }
-
+                to="/adminpanel"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+              >
+                {" "}
+                Admin
+              </NavLink>
+            ) : null}
 
             <i onClick={handleBar} className="fa-solid fa-x"></i>
           </ul>

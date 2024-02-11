@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function RegisterPage() {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
+    const [image, setImage] = useState("")
     const {addToken} = useContext(UserContext)
     const navigate = useNavigate()
   
@@ -17,16 +18,20 @@ function RegisterPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name:name,
-          password:password
+          password:password,
+          image:image
         })
       })
+      
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         addToken(data)
         navigate("/")
       })
       .catch((error)=>console.log(error.message))
   }
+  
   return (
     <div>
       <h1>register</h1>
@@ -43,6 +48,12 @@ function RegisterPage() {
           type="text"
         />
         <br />
+        {/* <input
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+          type="text"
+        />
+        <br /> */}
         <button>register</button>
       </form>
     </div>

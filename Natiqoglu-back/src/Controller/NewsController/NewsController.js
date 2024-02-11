@@ -20,9 +20,9 @@ export const getNewsById =async (req, res) => {
 }
 
 export const addNews = async (req, res) => {
-    const {image,name,about}=req.body
+    const {image,name,about,comments,like,dislike,view}=req.body
     try {
-        const news = new NewsModel({image,name,about})
+        const news = new NewsModel({image,name,about,comments,like,dislike,view})
         await news.save()
         res.send(news)
     } catch (error) {
@@ -32,15 +32,14 @@ export const addNews = async (req, res) => {
 
 export const updateNewsById = async (req, res) => {
     const {id} = req.params
-    const {image,name,about}=req.body
+    const {image,name,about,comments,like,dislike,view}=req.body
     try {
-        const news = await NewsModel.findByIdAndUpdate(id,{image,name,about})
+        const news = await NewsModel.findByIdAndUpdate(id,{image,name,about,comments,like,dislike,view})
         res.send(news)
     } catch (error) {
         res.send(error.message)
     }
 }
-
 
 export const deleteNewsById = async (req, res) => {
     

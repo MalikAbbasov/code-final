@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext/UserProvider";
 
 function Users() {
-  const { decode } = useContext(UserContext);
+  const { decode, token } = useContext(UserContext);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -14,17 +14,29 @@ function Users() {
   }, []);
 
   async function getUsers() {
-    const data = await fetch("http://localhost:3400/user");
+    const data = await fetch("http://localhost:3400/user", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const res = await data.json();
     setUsers(res);
   }
 
-  async function delUser(id) {
+  async function delUserById(id) {
     if (decode && decode.role === "admin") {
-            await fetch(`http://localhost:3400/user/${id}`, { method: "DELETE" })
-            await getUsers()
+      await fetch(`http://localhost:3400/user/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await getUsers();
+      console.log(decode.role);
+      console.log(token);
     }
-
   }
 
   return (
@@ -44,6 +56,7 @@ function Users() {
       <table id="customers">
         <tr>
           <th>Id</th>
+          <th>image</th>
           <th>Name</th>
           <th>Role</th>
           <th>delete</th>
@@ -52,6 +65,9 @@ function Users() {
 
         {users.map((x) => (
           <tr key={x._id}>
+            <td>
+              <img src={x.image} alt="" />
+            </td>
             <td>{x._id}</td>
             <td>{x.name}</td>
             <td>{x.role}</td>
@@ -59,7 +75,7 @@ function Users() {
               <button>update</button>
             </td>
             <td>
-              <button onClick={() => delUser(x._id)}>delete</button>
+              <button onClick={() => delUserById(x._id)}>delete</button>
             </td>
           </tr>
         ))}

@@ -20,10 +20,10 @@ export const getUserById = async (req, res) => {
 }
 
 export const addUser =  async (req, res) => {
-    const {name,password} = req.body
+    const {name,password,image} = req.body
     console.log(password);
     try {
-        const users = new UserModel({name,password})
+        const users = new UserModel({name,password,image})
         await users.save()
         res.send("User created")
     } catch (error) {
@@ -33,9 +33,9 @@ export const addUser =  async (req, res) => {
 
 export const updateUser = async (req, res) => {
     const {id} = req.params
-    const {name,password,role}=req.body
+    const {name,password,role,image}=req.body
     try {
-        const users = await UserModel.findByIdAndUpdate(id,{name,password,role})
+        const users = await UserModel.findByIdAndUpdate(id,{name,password,role,image})
         res.send("User updated")
     } catch (error) {
         res.send(error.message)

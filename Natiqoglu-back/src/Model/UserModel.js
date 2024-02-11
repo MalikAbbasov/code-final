@@ -7,6 +7,7 @@ const userSchema = new Schema(
       unique: true,
     },
     password: String,
+    image: String,
     role: { type: String, default: "User" },
   },
   { timestamps: true }
