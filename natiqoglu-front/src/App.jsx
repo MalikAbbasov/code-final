@@ -10,25 +10,31 @@ import Adminpanel from "./pages/Adminpanel";
 import News from "./components/News";
 import Users from "./components/Users";
 import { HelmetProvider } from "react-helmet-async";
+import Profile from "./components/Profile";
+import NewsUpdate from "./components/NewsUpdate";
+import UserUpdate from "./components/UserUpdate";
 
 function App() {
   return (
     <HelmetProvider>
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Mainlayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/adminpanel" element={<Adminpanel />} />
-            <Route path="/user" element={<Users />} />
-            <Route path="/news" element={<News />} />
-            <Route path="*" element={<Error />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Mainlayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/adminpanel" element={<Adminpanel />} />
+              <Route path="/user" element={<Users />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/newsupdate/:id" element={<NewsUpdate />} />
+              <Route path="/userupdate/:id" element={<UserUpdate />} />
+              <Route path="*" element={<Error />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </HelmetProvider>
   );
 }

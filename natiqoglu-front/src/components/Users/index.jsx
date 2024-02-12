@@ -39,6 +39,7 @@ function Users() {
     }
   }
 
+
   return (
     <div>
       <div className="text">
@@ -72,7 +73,7 @@ function Users() {
             <td>{x.name}</td>
             <td>{x.role}</td>
             <td>
-              <button>update</button>
+            <Link to={`/userupdate/${x._id}`}><button>update</button></Link>
             </td>
             <td>
               <button onClick={() => delUserById(x._id)}>delete</button>

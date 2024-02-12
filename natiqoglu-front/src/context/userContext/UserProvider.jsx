@@ -8,11 +8,12 @@ function UserProvider({children}) {
     const [token, setToken] = useState(null)
     const [decode, setDecode] = useState(null)
 
+
     function addToken(token) {
         setToken(token)
-        console.log(token)
         const token_decoded = jwtDecode(token);
-        console.log(token_decoded)
+        // console.log(token)
+        // console.log(token_decoded)
         setDecode(token_decoded)
     }
     

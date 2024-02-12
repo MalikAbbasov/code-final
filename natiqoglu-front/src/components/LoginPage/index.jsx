@@ -24,7 +24,7 @@ function LoginPage() {
         addToken(data);
         navigate("/");
       });
-    console.log(password);
+    // console.log(password);
   }
 
   return (

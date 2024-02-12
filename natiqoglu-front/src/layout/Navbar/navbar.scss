@@ -4,48 +4,123 @@
   align-items: center;
   justify-content: center;
   min-height: 80px;
+  border-bottom: 1px solid gray;
+  background-color: #030003;
   .container {
     width: 1200px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     height: 100%;
+    .page_name {
+      a {
+        h1 {
+          transition: 350ms;
+          color: white;
+          font-size: 40px;
+          cursor: pointer;
+          &:hover {
+            color: #176781;
+          }
+        }
+      }
+    }
+        //user infos after login in responsive
+    .user_resp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      .profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        h5 {
+          font-size: 18px;
+          color: white;
+          letter-spacing: 1px;
+        }
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      p {
+        cursor: pointer;
+        color: white;
+      }
+    }
+    .logout{
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    //user infos after login
+    .user {
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      display: none;
+      .profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        h5 {
+          font-size: 18px;
+        }
+      }
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      p {
+        cursor: pointer;
+      }
+    }
+    // close button in responsive
     .fa-x {
       display: none;
     }
-    .page_name {
-      h1 {
-        font-size: 40px;
-        cursor: pointer;
-        color: black;
-      }
-    }
+    
     .aside_nav {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
       transition: 400ms;
       .active {
         color: var(--main-active-color);
+        background-color: initial;
       }
       a {
         font-size: 20px;
         cursor: pointer;
         transition: 400ms;
-        padding-bottom: 3px;
         color: var(--main-li-color);
         &:hover {
           color: var(--main-active-color);
-          border-bottom: 2px solid #030003;
         }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
       }
     }
+    //responsive bars
     .fa-bars {
       display: none;
       color: #001228;
       cursor: pointer;
     }
+    //pages
     .pages {
       display: flex;
       align-items: center;
@@ -62,16 +137,17 @@
         color: var(--main-btn-color);
         font-size: 18px;
         border: none;
-        .fa-moon{
+        border: 1px solid white;
+        .fa-moon {
           position: relative;
-          .fa-star{
+          .fa-star {
             position: absolute;
             color: yellow;
             font-size: 10px;
             top: -5px;
             right: -10px;
           }
-          .st{
+          .st {
             position: absolute;
             color: yellow;
             font-size: 10px;
@@ -87,6 +163,23 @@
 @media screen and (max-width: 780px) {
   #navbar {
     .container {
+      .user_resp {
+        display: none;
+      }
+      .user {
+        display: flex;
+        .profile {
+          position: absolute;
+          top: 30px;
+          left: 30px;
+        }
+        p {
+          position: absolute;
+          bottom: 30px;
+          right: 30px;
+          color: #030003;
+        }
+      }
       .fa-x {
         position: absolute;
         display: block !important;
@@ -97,7 +190,7 @@
         display: block;
       }
       .aside_nav {
-        width: 30%;
+        width: 60%;
         min-height: 100vh;
         position: fixed;
         display: flex;
@@ -128,7 +221,7 @@
       }
       .nav_responsive {
         color: white;
-        width: 30%;
+        width: 60%;
         min-height: 100vh;
         position: fixed;
         display: flex;

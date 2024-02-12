@@ -4,12 +4,13 @@ import jwt from "jsonwebtoken";
 
 export const handleLoginController = async (req, res) => {
   try {
-    const { name, password } = req.body;
-    console.log(password);
+    const { name, password,image } = req.body;
+    // console.log(password);
+    // console.log(image);
     const users = await UserModel.findOne({ name });
-    console.log(users.password)
+    // console.log(users.password)
     const isPasswordCorrect = await bcrypt.compare(password, users.password);
-    console.log(isPasswordCorrect);
+    // console.log(isPasswordCorrect);
     if (!users) {
       return res.send("user not found");
       
@@ -20,7 +21,7 @@ export const handleLoginController = async (req, res) => {
       
     }
     const token = jwt.sign(
-      { name, role: users.role },
+      { name, role: users.role, image: users.image },
       process.env.JWT_SECRET_KEY
     );
     res.json(token);

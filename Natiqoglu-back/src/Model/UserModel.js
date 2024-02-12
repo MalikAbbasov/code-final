@@ -7,7 +7,7 @@ const userSchema = new Schema(
       unique: true,
     },
     password: String,
-    image: String,
+    image: { type: String, default: "https://publicdomainvectors.org/tn_img/abstract-user-flat-4.webp" },
     role: { type: String, default: "User" },
   },
   { timestamps: true }

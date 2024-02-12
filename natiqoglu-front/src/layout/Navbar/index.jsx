@@ -2,30 +2,15 @@ import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import useLocalStorage from "use-local-storage";
 import "./navbar.scss";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/userContext/UserProvider";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
-  const { id } = useParams();
   const [bars, setBars] = useState(true);
-  const [user, setUser] = useState([]);
-  const { decode, logOut, token } = useContext(UserContext);
+  const { decode, logOut } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    getUsersById();
-  }, []);
-
-  async function getUsersById() {
-    const data = await fetch(`http://localhost:3400/user/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const res = await data.json();
-    setUser(res);
-  }
 
   const handleToggle = () => {
     setDarkMode(!darkMode);
@@ -34,7 +19,6 @@ function Navbar() {
 
   const handleBar = () => {
     setBars(!bars);
-    console.log(bars);
   };
 
   return (
@@ -63,16 +47,29 @@ function Navbar() {
             >
               About
             </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
+              Contact
+            </NavLink>
             {decode ? (
-              <>
-                <div>
-                  <img src={user.image} alt="" />
-                  <p>{user.name}</p>
-                  <p>salam</p>
-                  {console.log(user.name)}
+              <Link to={`/profile`}>
+                <div className="user">
+                  <div className="profile">
+                    <h5>{decode.name}</h5>
+                    {
+                      decode.image ? <img src={decode.image} alt="" /> : <></>
+                    }
+                  </div>
+                  <p onClick={() => logOut()}>
+                    log out{" "}
+                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                  </p>
                 </div>
-                <p onClick={() => logOut()}>log out</p>
-              </>
+              </Link>
             ) : (
               <>
                 <NavLink
@@ -87,10 +84,11 @@ function Navbar() {
                 <NavLink
                   to="/login"
                   className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active" : ""
+                    isPending ? "pending" : isActive ? "active " : ""
                   }
                 >
-                  Login{" "}
+                  <p>Login</p>
+                  <i className="fa-solid fa-user"></i>{" "}
                 </NavLink>
               </>
             )}
@@ -109,6 +107,25 @@ function Navbar() {
             <i onClick={handleBar} className="fa-solid fa-x"></i>
           </ul>
           <div className="pages">
+            {decode ? (
+              <>
+                <Link to={`/profile`}>
+                  <div className="user_resp">
+                    <div className="profile">
+                      <h5>{decode.name}</h5>
+                      <img src={decode.image} alt="" />
+                    </div>
+                  </div>
+                </Link>
+                <p className="logout" onClick={() => logOut(navigate("/"))}>
+                  log out{""}
+                  <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                </p>
+              </>
+            ) : (
+              <></>
+            )}
+
             <i onClick={handleBar} className="fa-solid fa-bars"></i>
             <div className="dark_mode">
               <button onClick={handleToggle}>

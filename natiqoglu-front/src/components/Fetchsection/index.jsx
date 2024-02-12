@@ -22,6 +22,7 @@ function Fetchsection() {
           <p>{x.name}</p>
           <p>{x.category}</p>
           <p>{x.view}</p>
+          <p>{x.createdAt.slice(0,10)}</p>
           <Link>detail</Link>
         </div>
       ))}
