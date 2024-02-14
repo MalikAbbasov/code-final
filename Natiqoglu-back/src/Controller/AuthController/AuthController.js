@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const handleLoginController = async (req, res) => {
   try {
-    const { name, password,image } = req.body;
+    const { name, password } = req.body;
     // console.log(password);
     // console.log(image);
     const users = await UserModel.findOne({ name });
@@ -15,10 +15,8 @@ export const handleLoginController = async (req, res) => {
       return res.send("user not found");
       
     }
-
     if (!isPasswordCorrect) {
       return res.send("wrong password");
-      
     }
     const token = jwt.sign(
       { name, role: users.role, image: users.image },
@@ -37,7 +35,7 @@ export const handleRegisterController = async (req, res) => {
   console.log(hash);
   try {
     const users = new UserModel({ name,image, password: hash });
-    await users.save();
+    await users.save(); 
     const token = jwt.sign(
       { name: users.name, image:users.image, role: users.role },
       process.env.JWT_SECRET_KEY

@@ -8,9 +8,9 @@ const newsSchema = new Schema(
     category: String,
     date: String,
     comments:String,
-    like:Number,
-    dislike:Number,
-    view:Number,
+    like:{ type: Number, default: 0 },
+    dislike:{ type: Number, default: 0 },
+    view:{ type: Number, default: 0 },
   },
   { timestamps: true }
 );

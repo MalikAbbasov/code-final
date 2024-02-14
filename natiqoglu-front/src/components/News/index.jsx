@@ -57,11 +57,12 @@ function News() {
         </Link>
       </div>
       <Formik
-        initialValues={{ image: "", name: "", about: "" }}
+        initialValues={{ image: "", name: "", about: "",category:"" }}
         validationSchema={Yup.object({
           image: Yup.string().required("Required"),
           name: Yup.string().required("Required"),
           about: Yup.string().required("Required"),
+          category: Yup.string().required("Required"),
         })}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
@@ -94,6 +95,14 @@ function News() {
           <Field name="about" type="text" />
           <h4>
             <ErrorMessage name="about" />
+          </h4>
+
+          <label htmlFor="category">
+            <p>Category</p>
+          </label>
+          <Field name="category" type="text" />
+          <h4>
+            <ErrorMessage name="category" />
           </h4>
 
           <button type="submit">Submit</button>

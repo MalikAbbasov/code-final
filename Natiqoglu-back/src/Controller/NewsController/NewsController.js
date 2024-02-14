@@ -9,11 +9,15 @@ export const getAllNews = async (req, res) => {
     }
 }
 
-export const getNewsById =async (req, res) => {
+export const getNewsById = async (req, res) => {
     const {id} = req.params
+    // const {view} = req.body
     try {
+        // const newView = view+1
         const news = await NewsModel.findById(id)
+        
         res.send(news)
+        // res.send(newView)
     } catch (error) {
         res.send(error.message)
     }

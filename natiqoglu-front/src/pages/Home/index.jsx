@@ -11,7 +11,7 @@ function Home() {
         <title>Natiqoglu-Home</title>
       </Helmet>
       <Header />
-      {/* <Fetchsection/> */}
+      <Fetchsection/>
       {/* <Users/> */}
     </div>
   );
