@@ -1,0 +1,227 @@
+#profile{
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9e9e9;
+    min-height: 450px;
+    padding: 50px 0px;
+    .container{
+        width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .image{
+            width: 30%;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            background-color: white;
+            img{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            }
+            h1{
+                font-size: 30px;
+            }
+            p{
+                font-size: 22px;
+                font-weight: 600;
+                color: #5c5c5c;
+                text-transform: uppercase;
+            }
+        }
+        .info{
+            width: 65%;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 20px;
+            background-color: white;
+            h3{
+                width: 250px;
+                font-size: 25px;
+            }
+            p{
+                font-size: 22px;
+            }
+            .name{
+                margin-top: 10px;
+                width: 90%;
+                min-height: 75px;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                padding: 0 30px;
+                border-bottom: 2px solid gray; 
+            }
+            .role{
+                margin-top: 10px;
+                width: 90%;
+                height: 75px;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                padding: 0 30px;
+                border-bottom: 2px solid gray; 
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1200px) {
+    #profile{
+        .container{
+            width: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 15px;
+            .image{
+                width: 70%;
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 20px;
+                background-color: white;
+                img{
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                }
+                h1{
+                    font-size: 30px;
+                }
+                p{
+                    font-size: 22px;
+                    font-weight: 600;
+                    color: #5c5c5c;
+                    text-transform: uppercase;
+                }
+            }
+            .info{
+                width: 70%;
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 20px;
+                background-color: white;
+                h3{
+                    width: 250px;
+                    font-size: 25px;
+                }
+                p{
+                    font-size: 22px;
+                }
+                .name{
+                    margin-top: 10px;
+                    width: 90%;
+                    min-height: 75px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    padding: 0 30px;
+                    border-bottom: 2px solid gray; 
+                }
+                .role{
+                    margin-top: 10px;
+                    width: 90%;
+                    height: 75px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    padding: 0 30px;
+                    border-bottom: 2px solid gray; 
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:650px) {
+    #profile{
+        .container{
+            width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 15px;
+            .image{
+                width: 70%;
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 20px;
+                background-color: white;
+                img{
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                }
+                p{
+                    font-size: 22px;
+                    font-weight: 600;
+                    color: #5c5c5c;
+                    text-transform: uppercase;
+                }
+            }
+            .info{
+                width: 70%;
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 20px;
+                background-color: white;
+                h3{
+                    width: 250px;
+                    font-size: 25px;
+                }
+                p{
+                    font-size: 22px;
+                }
+                .name{
+                    margin-top: 10px;
+                    width: 100%;
+                    min-height: 75px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    padding: 0 30px;
+                    text-align: center;
+                    border-bottom: 2px solid gray; 
+                }
+                .role{
+                    margin-top: 10px;
+                    width: 90%;
+                    height: 75px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    flex-direction: column;
+                    padding: 0 30px;
+                    text-align: center;
+                    border-bottom: 2px solid gray; 
+                }
+            }
+        }
+    }
+}

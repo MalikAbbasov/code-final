@@ -1,6 +1,6 @@
 :root{
     --main-text-color:rgb(0, 0, 0);
-    --main-bg-color:rgb(255, 255, 255);
+    --main-bg-color:#222627;
     --main-btn-color:white;
     --main-navbg-color:#add8e6;
     --main-active-color:#add8e6;
@@ -11,17 +11,17 @@
   }
 
   .dark{
-    --main-li-color:rgb(0, 0, 0);
+    --main-li-color:white;
     --main-text-color:rgb(255, 253, 253);
     --main-bg-color: rgb(0, 0, 0);
     transition: 500ms;
     --main-btn-color:rgb(255, 153, 0);
     --main-navbg-color:white;
     --main-nav-color:black;
-    --main-active-color:#001228;
+    --main-active-color:#0073ff;
     --main-h1-color:rgb(0, 0, 0);
     --main-prdcts-color:rgb(87, 87, 87);
-    --main-btnbg-color:#add8e6;
+    --main-btnbg-color:white;
   }
 
   body{

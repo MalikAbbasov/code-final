@@ -39,48 +39,45 @@ function Users() {
     }
   }
 
-
   return (
     <div>
-      <div className="text">
-        <h1>news</h1>
-        <h1>/</h1>
-        <Link to="/user">
-          <h1>users</h1>
-        </Link>
-        <h1>/</h1>
-        <Link to="/news">
-          <h1>news</h1>
-        </Link>
+      <div id="user">
+        <div className="container">
+          <div className="text">
+            <h1>Users</h1>
+          </div>
+
+          <table id="customers">
+            <tr>
+              <th>Id</th>
+              <th>image</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>delete</th>
+              <th>update</th>
+            </tr>
+
+            {users.map((x) => (
+              <tr key={x._id}>
+                <td>{x._id}</td>
+                <td>
+                  <img src={x.image} alt="" />
+                </td>
+                <td>{x.name}</td>
+                <td>{x.role}</td>
+                <td>
+                  <Link to={`/userupdate/${x._id}`}>
+                    <button>update</button>
+                  </Link>
+                </td>
+                <td>
+                  <button onClick={() => delUserById(x._id)}>delete</button>
+                </td>
+              </tr>
+            ))}
+          </table>
+        </div>
       </div>
-
-      <table id="customers">
-        <tr>
-          <th>Id</th>
-          <th>image</th>
-          <th>Name</th>
-          <th>Role</th>
-          <th>delete</th>
-          <th>update</th>
-        </tr>
-
-        {users.map((x) => (
-          <tr key={x._id}>
-            <td>
-              <img src={x.image} alt="" />
-            </td>
-            <td>{x._id}</td>
-            <td>{x.name}</td>
-            <td>{x.role}</td>
-            <td>
-            <Link to={`/userupdate/${x._id}`}><button>update</button></Link>
-            </td>
-            <td>
-              <button onClick={() => delUserById(x._id)}>delete</button>
-            </td>
-          </tr>
-        ))}
-      </table>
     </div>
   );
 }

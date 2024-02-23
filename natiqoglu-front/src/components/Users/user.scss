@@ -2,6 +2,7 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    
   }
   
   #customers td, #customers th {
@@ -9,14 +10,39 @@
     padding: 8px;
   }
   
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  #customers tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
   
-  #customers tr:hover {background-color: #ddd;}
+  #customers tr:hover {
+    background-color: #ddd;
+
+  }
   
   #customers th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #aa0404;
     color: white;
+  }
+
+  #user{
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 50px 0px;
+    .container{
+      width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      img{
+        width: 150px;
+        height: 150px;
+      }
+    }
   }

@@ -1,4 +1,5 @@
-import { UserModel } from "../../Model/UserModel.js"
+import { UserModel } from "../Model/UserModel.js"
+// 65d37e80253f50a8936afea5
 
 export const getAllUsers = async (req, res) => {
     try {
@@ -20,10 +21,10 @@ export const getUserById = async (req, res) => {
 }
 
 export const addUser =  async (req, res) => {
-    const {name,password,image} = req.body
+    const {name,email,password,image} = req.body
     console.log(password);
     try {
-        const users = new UserModel({name,password,image})
+        const users = new UserModel({name,email,password,image})
         await users.save()
         res.send("User created")
     } catch (error) {
@@ -33,9 +34,9 @@ export const addUser =  async (req, res) => {
 
 export const updateUser = async (req, res) => {
     const {id} = req.params
-    const {name,password,role,image}=req.body
+    const {name,email,password,role,image}=req.body
     try {
-        const users = await UserModel.findByIdAndUpdate(id,{name,password,role,image})
+        const users = await UserModel.findByIdAndUpdate(id,{name,email,password,role,image})
         res.send("User updated")
     } catch (error) {
         res.send(error.message)

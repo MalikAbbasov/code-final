@@ -11,11 +11,27 @@ function Navbar() {
   const { decode, logOut } = useContext(UserContext);
   const navigate = useNavigate();
 
+  //function for navbar scroll
+  const [isOpen, setIsOpen] = useState(false);
+  const [stickyNav, setStickyNav] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", stickNavbar);
 
-  const handleToggle = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle("dark");
+    return () => {
+      window.removeEventListener("scroll", stickNavbar);
+    };
+  }, []);
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      windowHeight > 150 ? setStickyNav(true) : setStickyNav(false);
+    }
   };
+
+  // const handleToggle = () => {
+  //   setDarkMode(!darkMode);
+  //   document.body.classList.toggle("dark");
+  // };
 
   const handleBar = () => {
     setBars(!bars);
@@ -23,8 +39,8 @@ function Navbar() {
 
   return (
     <div>
-      <nav id="navbar">
-        <div className="container">
+      <nav className={`navbar  ${stickyNav ? "fixed" : ""}`}>
+        <div className="container" >
           <div className="page_name">
             <Link to="/">
               <h1>Natiqoglu</h1>
@@ -37,7 +53,7 @@ function Navbar() {
                 isPending ? "pending" : isActive ? "active" : ""
               }
             >
-              Home
+              Ana səhifə
             </NavLink>
             <NavLink
               to="/about"
@@ -45,31 +61,26 @@ function Navbar() {
                 isPending ? "pending" : isActive ? "active" : ""
               }
             >
-              About
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "active" : ""
-              }
-            >
-              Contact
+              Haqqımızda
             </NavLink>
             {decode ? (
-              <Link to={`/profile`}>
-                <div className="user">
-                  <div className="profile">
-                    <h5>{decode.name}</h5>
-                    {
-                      decode.image ? <img src={decode.image} alt="" /> : <></>
-                    }
+              <>
+                <Link to={`/profile`}>
+                  <div className="user">
+                    <div className="profile">
+                      <h5>{decode.name}</h5>
+                      <img src={decode.image} alt="" />
+                    </div>
                   </div>
-                  <p onClick={() => logOut()}>
-                    log out{" "}
-                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                  </p>
-                </div>
-              </Link>
+                </Link>
+                <p
+                  className="logout_none"
+                  onClick={() => logOut(navigate("/"))}
+                >
+                  log out{" "}
+                  <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                </p>
+              </>
             ) : (
               <>
                 <NavLink
@@ -93,15 +104,26 @@ function Navbar() {
               </>
             )}
             {decode && decode.role === "admin" ? (
-              <NavLink
-                to="/adminpanel"
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""
-                }
-              >
-                {" "}
-                Admin
-              </NavLink>
+              <>
+                <NavLink
+                  to="/news"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  {" "}
+                  News
+                </NavLink>
+                <NavLink
+                  to="/user"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  {" "}
+                  User
+                </NavLink>
+              </>
             ) : null}
 
             <i onClick={handleBar} className="fa-solid fa-x"></i>
@@ -127,18 +149,6 @@ function Navbar() {
             )}
 
             <i onClick={handleBar} className="fa-solid fa-bars"></i>
-            <div className="dark_mode">
-              <button onClick={handleToggle}>
-                {darkMode ? (
-                  <i className="fa-solid fa-moon">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star st"></i>
-                  </i>
-                ) : (
-                  <i className="fa-solid fa-sun"></i>
-                )}
-              </button>
-            </div>
           </div>
         </div>
       </nav>

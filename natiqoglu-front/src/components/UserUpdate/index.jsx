@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext/UserProvider";
+import "./userupdate.scss";
 
 function UserUpdate() {
   const { id } = useParams();
@@ -8,7 +9,7 @@ function UserUpdate() {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const navigate = useNavigate();
-  const { token } = useContext(UserContext);
+  const { token, decode } = useContext(UserContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,17 +19,26 @@ function UserUpdate() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ image, name, role }),
-    }).then((x) => navigate("/user"));
+      body: JSON.stringify({ image:image, name:name, role:role }),
+    }).then((x) => navigate("/"));
+
+    console.log(name);
+    console.log(token);
   }
 
   async function getUserById(id) {
-    const data = await fetch(`http://localhost:3400/user/${id}`);
-    const res = await data.json();
-    setImage(res.image)
-    setName(res.name)
-    setRole(res.role)
-  }
+      const data = await fetch(`http://localhost:3400/user/${id}`,{
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        }});
+      const res = await data.json();
+      console.log(res);
+      setImage(res.image);
+      setName(res.name);
+      setRole(res.role);
+    }
+  
 
   useEffect(() => {
     getUserById(id);
@@ -40,28 +50,47 @@ function UserUpdate() {
 
   return (
     <div>
-        <h1>user update</h1>
-      <form action="#" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => handleChange(e, setImage)}
-        />
-        <br />
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => handleChange(e, setName)}
-        />
-        <br />
-        <input
-          type="text"
-          value={role}
-          onChange={(e) => handleChange(e, setRole)}
-        />
-        <br />
-        <button>update</button>
-      </form>
+      <div id="user-update">
+        <div className="container">
+          <h1>User update</h1>
+          <p>{decode.name}</p>
+
+          <form action="#" onSubmit={handleSubmit}>
+
+            <p>image</p>
+            <input
+              type="text"
+              value={image}
+              onChange={(e) => handleChange(e, setImage)}
+            />
+            <p>name</p>
+            <input
+              placeholder="yeni ad"
+              type="text"
+              value={name}
+              onChange={(e) => handleChange(e, setName)}
+            />
+
+            {decode.role === "admin" ? (
+              <>
+                <p>role</p>
+                
+                <input
+                  placeholder="yeni rol"
+                  type="text"
+                  value={role}
+                  onChange={(e) => handleChange(e, setRole)}
+                />
+                
+              </>
+            ) : (
+              <></>
+            )}
+
+            <button>Update</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

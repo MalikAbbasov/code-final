@@ -21,11 +21,6 @@ function Header() {
       caption:
         "<h3><p>9 fevral</p></h3><h5>Kişi çoxmərtəbəli binanın eyvanından paraşütlə tullandı</h5>",
     },
-    {
-      image: "https://sonxeber.az/uploads/4ff85be5918c867d0e540d1d36a1cb7a.png",
-      caption:
-        "<h3><p>10 fevral</p></h3><h5>Alimlərdən yeni elmi fərziyyə: Yer vaxtilə düz olub</h5>",
-    },
   ];
 
   const captionStyle = {

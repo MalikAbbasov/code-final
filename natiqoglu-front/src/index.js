@@ -6,13 +6,14 @@ import UserProvider from "./context/userContext/UserProvider";
 import NewsProvider from "./context/newsContext/NewsProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <React.StrictMode>
+  <React.Fragment>
     <NewsProvider>
       <UserProvider>
         {/* <Preloader /> */}
         <App />
       </UserProvider>
     </NewsProvider>
-  </React.StrictMode>
+  </React.Fragment>
 );

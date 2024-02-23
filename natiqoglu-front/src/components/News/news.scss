@@ -1,0 +1,103 @@
+
+  #news{
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 50px 0px;
+    .container{
+        width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        form{
+            margin: 25px 0px;
+            width: 350px;
+            min-height: 350px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            label{
+              width: 230px;
+              height: 44px;
+              position: relative;
+              p{
+                position: absolute;
+                bottom: -15px;
+                left: 20px;
+                background-color: white;
+              }
+            }
+            input{
+              width: 230px;
+              height: 44px;
+              border-radius:20px;
+              padding-left: 20px;
+            }
+            h4{
+                color: red;
+            }
+            button{
+              width: 150px;
+              height: 33px;
+              border-radius: 20px;
+              margin: 15px;
+              border: none;
+              background-color: #930077;
+              color: white;
+              font-size: 16px;
+            }
+          }
+          .cards{
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            .card{
+              width: 100%;
+              min-height: 400px;
+              display: flex;
+              align-items: center;
+              justify-content: space-evenly;
+              border: 1px solid black;
+              .image{
+                  width: 40%;
+                  min-height: 400px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-evenly;
+                  flex-direction: column;
+                  img{
+                      width: 100%;
+                      height: 310px;
+                  }
+              }
+              .text{
+                  width: 40%;
+                  min-height: 400px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-evenly;
+                  flex-direction: column;
+                  p{
+                      width: 100%;
+                      font-size: 18px;
+                  }
+                  .likes{
+                      width: 100%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                  }
+              }
+          }
+          }
+    }
+  }

@@ -1,5 +1,6 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import AboutPage from "../../components/AboutPage";
+import { Helmet } from "react-helmet-async";
 
 function About() {
   return (
@@ -7,7 +8,7 @@ function About() {
       <Helmet>
         <title>Natiqoglu-about</title>
       </Helmet>
-      <p>About</p>
+      <AboutPage/>
     </div>
   );
 }

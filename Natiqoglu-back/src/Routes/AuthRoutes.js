@@ -1,5 +1,5 @@
 import express from 'express'
-import { handleLoginController, handleRegisterController } from '../Controller/AuthController/AuthController.js'
+import { handleLoginController,handleRegisterController } from '../Controller/AuthController.js'
 export const authRoute = express.Router()
 
 authRoute.post('/login',handleLoginController )

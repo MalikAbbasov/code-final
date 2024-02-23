@@ -1,0 +1,102 @@
+#register {
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+    background-color: #FDF6F6;
+    .container {
+      width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h1 {
+        font-size: 48px;
+        letter-spacing: 4px;
+      }
+      form {
+        width: 350px;
+        min-height: 450px;
+        border-radius: 15px;
+        border: 1px solid gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        h5{
+            font-size: 18px;
+            color: #002C54;
+
+        }
+        h4{
+            color: #C5001A;
+        }
+        label {
+          width: 300px;
+          border-radius: 15px;
+        }
+        .password{
+            font-size: 20px;
+            font-family: "fontello";
+          }
+        input {
+          width: 300px;
+          border-radius: 15px;
+          height: 50px;
+          padding-left: 15px;
+          font-size: 18px;
+          border: 1px solid #002C54;  
+        }
+        .go_register {
+          width: 80%;
+          display: flex;
+          align-items: end;
+          justify-content: space-between;
+          flex-direction: column;
+          h4{
+              font-size: 16px;
+              color: #C5001A;
+              transition: 350ms;
+              &:hover{
+                  color: #002C54;
+              }
+          }
+        }
+        button {
+          width: 220px;
+          height: 40px;
+          border-radius: 15px;
+          font-size: 16px;
+          border: 1px solid #002C54;
+          transition: 400ms;
+        background-color: initial;
+          &:hover{
+            background-color: #002C54;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width:500px) {
+    #register {
+      .container {
+        h1 {
+          font-size: 36px;
+        }
+        form {
+          width: 300px;
+          label {
+            width: 240px;
+          }
+          input {
+            width: 240px;
+            
+          }
+        }
+      }
+    }
+   }
