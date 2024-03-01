@@ -53,7 +53,6 @@ function UserUpdate() {
       <div id="user-update">
         <div className="container">
           <h1>User update</h1>
-          <p>{decode.name}</p>
 
           <form action="#" onSubmit={handleSubmit}>
 

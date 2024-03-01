@@ -4,19 +4,20 @@ import { UserContext } from "../../context/userContext/UserProvider";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./news.scss";
-import { NewsContext } from "../../context/newsContext/NewsProvider";
 
 function News() {
   const [news, setNews] = useState([]);
   const { decode, token } = useContext(UserContext);
-  const { getNews } = useContext(NewsContext);
-
 
   useEffect(() => {
     getNews();
   }, []);
 
-
+  const getNews = async () => {
+    const data = await fetch("http://localhost:3400/news/");
+    const res = await data.json();
+    setNews(res);
+  };
 
   async function delNewsById(id) {
     if (decode && decode.role === "admin") {
@@ -122,8 +123,8 @@ function News() {
                   <div className="buttons">
                     <button onClick={() => delNewsById(x._id)}>Delete</button>
                     <Link to={`/newsupdate/${x._id}`}>
-                    <button>Update</button>
-                  </Link>
+                      <button>Update</button>
+                    </Link>
                   </div>
                 </div>
               </div>

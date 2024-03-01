@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     background-color: #FDF6F6;
+    padding: 20px;
     .container{
         width: 1200px;
         display: flex;
@@ -30,8 +31,18 @@
                 }
             }
             button{
-                display: flex;
-            }
+                width: 150px;
+                height: 35px;
+                border-radius: 15px;
+                margin-left: 15px;
+                border: 1px solid #db4437;
+                background-color: white;
+                transition: 400ms;
+                &:hover{
+                  background: #db4437;
+                  color: white;
+                }
+              }
         }
     }
 }

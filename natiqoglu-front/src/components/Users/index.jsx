@@ -53,8 +53,8 @@ function Users() {
               <th>image</th>
               <th>Name</th>
               <th>Role</th>
-              <th>delete</th>
-              <th>update</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
 
             {users.map((x) => (
@@ -67,11 +67,11 @@ function Users() {
                 <td>{x.role}</td>
                 <td>
                   <Link to={`/userupdate/${x._id}`}>
-                    <button>update</button>
+                    <button>Update</button>
                   </Link>
                 </td>
                 <td>
-                  <button onClick={() => delUserById(x._id)}>delete</button>
+                  <button onClick={() => delUserById(x._id)}>Delete</button>
                 </td>
               </tr>
             ))}

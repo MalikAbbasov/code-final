@@ -67,6 +67,7 @@
               align-items: center;
               justify-content: space-evenly;
               border: 1px solid black;
+              padding: 20px;
               .image{
                   width: 40%;
                   min-height: 400px;
@@ -95,6 +96,19 @@
                       display: flex;
                       align-items: center;
                       justify-content: space-between;
+                  }
+                  button{
+                    width: 150px;
+                    height: 35px;
+                    border-radius: 15px;
+                    margin-left: 15px;
+                    border: 1px solid #db4437;
+                    background-color: white;
+                    transition: 400ms;
+                    &:hover{
+                      background: #db4437;
+                      color: white;
+                    }
                   }
               }
           }
